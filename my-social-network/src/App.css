@@ -12,6 +12,7 @@
 .header {
   grid-area: h;
   background-color: rgb(5, 130, 214);
+  border-radius: 50px;
 }
 
 .header img {
