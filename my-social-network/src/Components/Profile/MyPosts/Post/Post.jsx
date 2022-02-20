@@ -8,7 +8,7 @@ const MyPosts = (props) => {
         <img src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg"></img>
         {props.message}
         <div>
-          <span>Like</span>
+          <span>Like</span> {props.likesCount}
         </div>
       </div>
     </div>
