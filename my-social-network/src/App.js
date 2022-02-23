@@ -20,8 +20,7 @@ const App = (props) => {
           <Route path='/profile' element={<Profile
             posts={props.state.profilePage.posts}
             newPostText={props.state.profilePage.newPostText}
-            addPost={props.addPost}
-            updateNewPost={props.updateNewPost}
+            dispatch={props.dispatch}
           />} />
         </Routes>
       </div>
