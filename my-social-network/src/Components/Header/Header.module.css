@@ -10,3 +10,11 @@
   height: 54px;
   padding-top: 3px;
 }
+
+.loginBlock {
+  float: right;
+} 
+
+.loginBlock a {
+  color: white;
+}
