@@ -1,19 +1,20 @@
-import * as axios from 'axios';
+import * as axios from 'axios'
 
 const instance = axios.create({
   withCredentials: true,
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
   headers: {
-    "API-KEY": "ce58cafb-7813-4281-bcd2-442551089eb5"
-  }
-});
+    'API-KEY': 'ce58cafb-7813-4281-bcd2-442551089eb5',
+  },
+})
 
 export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 10) {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-      .then(response => {
-        return response.data;
-      });
+    return instance
+      .get(`users?page=${currentPage}&count=${pageSize}`)
+      .then((response) => {
+        return response.data
+      })
   },
   follow(userId) {
     return instance.post(`follow/${userId}`)
@@ -22,12 +23,25 @@ export const usersAPI = {
     return instance.delete(`follow/${userId}`)
   },
   getProfile(userId) {
+    console.warn('Obsolete method. Please profileAPI object.')
+    return profileAPI.getProfile(userId)
+  },
+}
+
+export const profileAPI = {
+  getProfile(userId) {
     return instance.get(`profile/` + userId)
+  },
+  getStatus(userId) {
+    return instance.get('profile/status/' + userId)
+  },
+  updateStatus(status) {
+    return instance.put('profile/status', { status: status }) // сервер получает инфу через куки, нет необходимости указывать userId дополнительно
   },
 }
 
 export const authAPI = {
   me() {
     return instance.get(`auth/me`)
-  }
+  },
 }

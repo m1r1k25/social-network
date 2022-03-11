@@ -1,19 +1,26 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
-import Preloader from './../../../Components/Common/Preloader/Preloader'
+import { useSelector } from 'react-redux';
+import Preloader from './../../../Components/Common/Preloader/Preloader';
+import ProfileStatus from './ProfileStatus';
+import { updateNewMessageBodyCreator } from '../../../redux/dialogs-reducer';
+import { useDispatch } from 'react-redux';
 
 const ProfileInfo = (props) => {
+/*   const {newMessageBody}= useSelector((state) => state.messagePage)
+  console.log(newMessageBody);
+  const dispatch = useDispatch();
+  <button onClick={() => dispatch(updateNewMessageBodyCreator("hjkhjhjkhjk"))}>click</button> */
   if(!props.profile) {
     return <Preloader />
   }
   return (
     <div>
-      <div>
-        <img src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300" alt="logo"></img>
-      </div>
       <div className={s.descriptionBlock}>
-        <img src={props.profile.photos.large} alt='img'/> + descr
+        <img src={props.profile.photos.large} alt='img'/>
+        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
       </div>
+      
     </div>
   )
 }
